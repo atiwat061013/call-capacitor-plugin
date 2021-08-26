@@ -15,7 +15,7 @@ export class HomePage {
   constructor() {}
 
   async onClickTextRec() {
-    await HuaweiMlkit.textRec({language:"en", base64: this.image?.replace(/^data:image\/\w+;base64,/, "")})
+    await HuaweiMlkit.TextRecognition({language:"en", base64: this.image?.replace(/^data:image\/\w+;base64,/, "")})
       .then((res: any) => {
         this.result = res.value;
         console.log('result ==>', this.result.value);
