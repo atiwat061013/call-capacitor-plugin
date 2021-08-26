@@ -10,12 +10,12 @@ export class HomePage {
 
   result: any;
   image: any;
-  strImage: any;
+
 
   constructor() {}
 
   async onClickTextRec() {
-    await HuaweiMlkit.textRec({ value: this.strImage })
+    await HuaweiMlkit.textRec({language:"en", base64: this.image?.replace(/^data:image\/\w+;base64,/, "")})
       .then((res: any) => {
         this.result = res.value;
         console.log('result ==>', this.result.value);
@@ -35,14 +35,26 @@ export class HomePage {
       const reader = new FileReader();
       reader.onload = (event: any) => {
         this.image = event.target.result;
-        this.strImage = this.image.replace(/^data:image\/\w+;base64,/, "");
         console.log('imageAds', this.image);
-
-        console.log('strImage =>', this.strImage);
         
       };
       reader.readAsDataURL(event.target.files[0]);
     }
   }
+
+
+
+  // async onClickFaceVerification() {
+  //   await HuaweiMlkit.faceVerification({
+  //     faceTem: "dsd",
+  //     faceCom: "dsds"
+  //   })
+  //     .then((res: any) => {
+  //       console.log('result ==>', this.result.value);
+  //     })
+  //     .catch((err) => {
+  //       console.log('err ==>', this.result);
+  //     });
+  // }
 
 }
