@@ -1,0 +1,7 @@
+{
+  "name": "devcallcapacitorplugin",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
