@@ -11,6 +11,8 @@ export class HomePage {
   result: any;
   image: any;
 
+  imageFaceDetec: any;
+  resultFaceDetec: any;
 
   constructor() {}
 
@@ -40,6 +42,35 @@ export class HomePage {
       };
       reader.readAsDataURL(event.target.files[0]);
     }
+  }
+
+
+  onClickInputFaceDetec(){
+    document.getElementById('inputFaceDetec').click();
+  }
+
+  fileFaceDetecChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.imageFaceDetec = event.target.result;
+        console.log('imageFaceDetec', this.imageFaceDetec);
+        
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  async onClickFaceDetec() {
+    await HuaweiMlkit.FaceDetection({FaceImage: this.imageFaceDetec?.replace(/^data:image\/\w+;base64,/, "")})
+      .then((res: any) => {
+        this.resultFaceDetec = res.value;
+        console.log('result ==>', res);
+      })
+      .catch((err) => {
+        this.resultFaceDetec = err;
+        console.log('err ==>', this.resultFaceDetec);
+      });
   }
 
 
