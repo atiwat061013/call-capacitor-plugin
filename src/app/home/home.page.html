@@ -115,4 +115,107 @@
     </ion-row>
   </ion-grid>
 
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="ion-align-items-center" class="mycard">
+          <ion-card-header>
+            <ion-card-title>FaceVerification</ion-card-title>
+          </ion-card-header>
+          <input
+            type="file"
+            id="inputFaceVerifiTem"
+            accept="image/png, image/jpeg"
+            (change)="fileFaceVerifiTemChange($event)"
+            hidden
+          />
+          <input
+            type="file"
+            id="inputFaceVerifiCom"
+            accept="image/png, image/jpeg"
+            (change)="fileFaceVerifiComChange($event)"
+            hidden
+          />
+
+          <ion-row>
+            <ion-col size="6">
+              <ion-row>
+                <ion-col style="text-align: center; justify-content: center">
+                  <img style="max-height: 300px;" [src]="imageVerifiTem" />
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-button
+                    expand="block"
+                    (click)="onClickInputFaceVerifiTem()"
+                    color="success"
+                  >
+                    รูป Template
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col style="text-align: center; justify-content: center">
+                  <img style="max-height: 300px;" [src]="resultPicVerifiTem" />
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="6">
+              <ion-row>
+                <ion-col style="text-align: center; justify-content: center">
+                  <img style="max-height: 300px;" [src]="imageVerifiCom" />
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+            
+
+                <ion-col>
+                  <ion-button
+                    expand="block"
+                    (click)="onClickInputFaceVerifiCom()"
+                    color="success"
+                  >
+                    รูป Compare
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col style="text-align: center; justify-content: center">
+                  <img style="max-height: 300px;" [src]="resultPicVerifiCom" />
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+
+          
+
+          
+
+          <ion-row>
+            <ion-col style="text-align: center; justify-content: center">
+              <ion-button (click)="onClickFaceVerification()" shape="round">
+                Call Plugin FaceVerification
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <p>Status:  {{ resultFaceVerification.status }}</p>
+              <p>Location:  {{ resultFaceVerification.location }}</p>
+              <p>ID:  {{ resultFaceVerification.id }}</p>
+              <p>Similarity:  {{ resultFaceVerification.similarity }}</p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
